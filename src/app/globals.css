@@ -8,10 +8,7 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
+.amplify-button {
   -webkit-appearance: button;
   background-color: var(--amplify-internal-button-background-color);
 }
