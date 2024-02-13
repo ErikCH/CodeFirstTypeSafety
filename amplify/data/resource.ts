@@ -11,14 +11,15 @@ const schema = a.schema({
   Post: a
     .model({
       title: a.string().required(),
-      comments: a.hasMany("Comment"),
+      comments: a.manyToMany("Comment", {relationName:"commentsPosts"}),
       owner: a.string().authorization([a.allow.owner().to(["read", "delete"])]),
     })
     .authorization([a.allow.public().to(["read"]), a.allow.owner()]),
   Comment: a
     .model({
       content: a.string().required(),
-      post: a.belongsTo("Post"),
+      // post: a.belongsTo("Post"),
+      posts: a.manyToMany("Post",{relationName:"commentsPosts"}),
       owner: a.string().authorization([a.allow.owner().to(["read", "delete"])]),
     })
     .authorization([a.allow.public().to(["read"]), a.allow.owner()]),
