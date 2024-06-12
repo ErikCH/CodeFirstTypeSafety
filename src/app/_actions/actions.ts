@@ -17,7 +17,7 @@ export async function deleteComment(formData: FormData) {
 
 export async function addComment(
   content: string,
-  post: Schema["Post"],
+  post: Schema["Post"]["type"],
   paramsId: string
 ) {
   if (content.trim().length === 0) return;

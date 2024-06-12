@@ -38,7 +38,7 @@ const Posts = async ({ params }: { params: { id: string } }) => {
         <AddComment
           addComment={addComment}
           paramsId={params.id}
-          post={post as Schema["Post"]}
+          post={post as Schema["Post"]["type"]}
         />
       ) : null}
 
