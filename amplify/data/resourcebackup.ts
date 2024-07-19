@@ -11,6 +11,7 @@ const schema = a.schema({
   Post: a
     .model({
       title: a.string().required(),
+      commentId: a.id().required(),
       comments: a.hasMany("Comment", "postId"),
       owner: a
         .string()
@@ -34,7 +35,7 @@ export type Schema = ClientSchema<typeof schema>;
 export const data = defineData({
   schema,
   authorizationModes: {
-    defaultAuthorizationMode: "identityPool",
+    defaultAuthorizationMode: "apiKey",
     // API Key is used for a.allow.public() rules
     apiKeyAuthorizationMode: {
       expiresInDays: 30,

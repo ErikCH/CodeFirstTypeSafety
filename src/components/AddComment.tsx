@@ -7,8 +7,8 @@ const Comments = ({
   post,
   paramsId,
 }: {
-  addComment: (content: string, post: Schema["Post"], paramsId: string) => void;
-  post: Schema["Post"];
+  addComment: (content: string, post: Schema["Post"]['type'], paramsId: string) => void;
+  post: Schema["Post"]['type'];
   paramsId: string;
 }) => {
   const [comment, setComment] = useState("");

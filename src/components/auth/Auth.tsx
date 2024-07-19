@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Amplify } from "aws-amplify";
-import config from "@/../amplifyconfiguration.json";
+import config from "@/../amplify_outputs.json";
 import "@aws-amplify/ui-react/styles.css";
 import { Authenticator } from "@aws-amplify/ui-react";
 

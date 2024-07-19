@@ -14,18 +14,21 @@ const Posts = async ({ params }: { params: { id: string } }) => {
       id: params.id,
     },
     {
-      authMode: "apiKey",
       selectionSet: ["id", "title"],
+      authMode: isSignedIn ? "userPool" : "identityPool",
     }
   );
+  console.log("post", post);
   const { data: allComments } = await cookieBasedClient.models.Comment.list({
-    authMode: "apiKey",
     selectionSet: ["content", "post.id", "id"],
+    authMode: isSignedIn ? "userPool" : "identityPool",
   });
 
   const comments = allComments.filter(
     (comment) => comment.post.id === params.id
   );
+
+  if (!post) return null;
 
   return (
     <div className="flex flex-col items-center p-4 gap-4">
@@ -38,7 +41,7 @@ const Posts = async ({ params }: { params: { id: string } }) => {
         <AddComment
           addComment={addComment}
           paramsId={params.id}
-          post={post as Schema["Post"]}
+          post={post as Schema["Post"]["type"]}
         />
       ) : null}
 

@@ -8,7 +8,7 @@ const Post = ({
   onDelete,
   isSignedIn,
 }: {
-  post: Pick<Schema["Post"], "title" | "id">;
+  post: Pick<Schema["Post"]["type"], "title" | "id">;
   onDelete: (id: string) => void;
   isSignedIn: boolean;
 }) => {
